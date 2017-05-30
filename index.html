@@ -36,6 +36,14 @@
                         .html( "Dropped!" );
                 }
             });
+            $( "#droppable4" ).droppable({
+                drop: function( event, ui ) {
+                    $( this )
+                        .addClass( "ui-state-highlight" )
+                        .find( "p" )
+                        .html( "Dropped!" );
+                }
+            });
         } );
     </script>
 </head>
@@ -48,11 +56,12 @@
 
 
 
+<div id="droppable4" class="ui-widget-header">
+    <div id="droppable3" class="ui-widget-header">
+        <div id="droppable2" class="ui-widget-header">
+            <div id="droppable" class="ui-widget-header">
 
-<div id="droppable3" class="ui-widget-header">
-    <div id="droppable2" class="ui-widget-header">
-        <div id="droppable" class="ui-widget-header">
-
+            </div>
         </div>
     </div>
 </div>

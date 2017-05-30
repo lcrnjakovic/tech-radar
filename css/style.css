@@ -16,22 +16,36 @@ p{
     clear: both;
     margin: 0 auto;
     border-radius: 50%;
+    display: table;
+    margin-top: 25%;
 }
 
 #droppable2 {
     width: 300px;
     height: 300px;
     clear: both;
-    margin:0 auto;
+    margin: 0 auto;
     border-radius: 50%;
     //background-color: blue;
     display: table;
+    margin-top: 15%;
+
 }
 
 #droppable3 {
     width: 450px;
     height: 450px;
+    clear: both;
     margin: 0 auto;
     border-radius: 50%;
-    //background-color: red;
+    //background-color: blue;
+    display: table;
+}
+
+#droppable4 {
+    width: 600px;
+    height: 600px;
+    margin: 0 auto;
+    border-radius: 50%;
+/ / background-color: red;
 }
