@@ -15,39 +15,70 @@
             $( "#droppable" ).droppable({
                 greedy: true,
                 drop: function( event, ui ) {
-                    $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
+                    var myX = ui.offset.left;
+                    var myY = ui.offset.top;
+
+                    var myR = $(this).outerWidth() / 2;
+                    var myCX = $(this).offset().left + myR;
+                    var myCY = $(this).offset().top + myR;
+
+                    if (checkIntersection(myX, myY, myCX, myCY, myR))
+                    {
+                        $(this).addClass('ui-state-highlight');
+                    }
                 }
             });
             $( "#droppable2" ).droppable({
                 greedy: true,
                 drop: function( event, ui ) {
-                    $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
+                    var myX = ui.offset.left;
+                    var myY = ui.offset.top;
+
+                    var myR = $(this).outerWidth() / 2;
+                    var myCX = $(this).offset().left + myR;
+                    var myCY = $(this).offset().top + myR;
+
+                    if (checkIntersection(myX, myY, myCX, myCY, myR))
+                    {
+                        $(this).addClass('ui-state-highlight');
+                    }
                 }
             });
             $( "#droppable3" ).droppable({
                 greedy: true,
                 drop: function( event, ui ) {
-                    $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
+                    var myX = ui.offset.left;
+                    var myY = ui.offset.top;
+
+                    var myR = $(this).outerWidth() / 2;
+                    var myCX = $(this).offset().left + myR;
+                    var myCY = $(this).offset().top + myR;
+
+                    if (checkIntersection(myX, myY, myCX, myCY, myR))
+                    {
+                        $(this).addClass('ui-state-highlight');
+                    }
                 }
             });
             $( "#droppable4" ).droppable({
                 drop: function( event, ui ) {
-                    $( this )
-                        .addClass( "ui-state-highlight" )
-                        .find( "p" )
-                        .html( "Dropped!" );
+                    var myX = ui.offset.left;
+                    var myY = ui.offset.top;
+
+                    var myR = $(this).outerWidth() / 2;
+                    var myCX = $(this).offset().left + myR;
+                    var myCY = $(this).offset().top + myR;
+
+                    if (checkIntersection(myX, myY, myCX, myCY, myR))
+                    {
+                        $(this).addClass('ui-state-highlight');
+                    }
                 }
             });
         } );
+        function checkIntersection(aX, aY, aCX, aCY, aR) {
+            return (Math.pow(aX - aCX, 2) + Math.pow(aY - aCY, 2) < Math.pow(aR, 2));
+        }
     </script>
 </head>
 <body>
