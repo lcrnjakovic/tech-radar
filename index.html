@@ -68,7 +68,10 @@
                     var myR = $(this).outerWidth() / 2;
                     var myCX = $(this).offset().left + myR;
                     var myCY = $(this).offset().top + myR;
-
+                    console.log(myX + ", " + myY + ", " + myCX + ", " + myCY + ", " + myR);
+                    console.log(Math.pow(myX - myCX, 2));
+                    console.log(Math.pow(myY - myCY, 2));
+                    console.log(Math.pow(myR, 2));
                     if (checkIntersection(myX, myY, myCX, myCY, myR))
                     {
                         $(this).addClass('ui-state-highlight');

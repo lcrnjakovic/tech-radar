@@ -58,6 +58,14 @@ h1 {
     display: inline-block;
 }
 
-div {
-    border-radius: 50%;
+.rect {
+    background-color: black;
+    width: auto;
+    height: auto;
+    display: table;
+}
+
+.rectText {
+    color: white;
+    padding: 2px;
 }

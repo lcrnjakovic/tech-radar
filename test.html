@@ -8,13 +8,12 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
 <div id="view">
-    <h1 id="draggable">X</h1>
-    <h1 id="coord"></h1>
     <div id="divDroppable">
-        <svg id="radar" viewBox="0 0 10 10" width="40%">
+        <svg id="radar" viewBox="0 0 10 10" width="50%">
             <circle id="droppable1" cx="5" cy="5" r="5" fill="#962D3E"></circle>
             <circle id="droppable2" cx="5" cy="5" r="4" fill="#F2EBC7"></circle>
             <circle id="droppable3" cx="5" cy="5" r="3" fill="#343642"></circle>
@@ -24,18 +23,29 @@
 
 </div>
 <script>
-    $( function() {
-        $("#draggable").draggable();
-        // Making SVG droppable
-        $("#divDroppable").droppable({
-            drop: function (event, ui) {
-                console.log(ui);
-            }
+    $(function(){
+        var offset = -0.2;
+        var xMove = 5 + offset;
+        var yMove = 7.5 + offset;
+        var txtMoveX = xMove + 0.1;
+        var txtMoveY = yMove + 0.25;
+       var svg = d3.select("svg");
+       var g = svg.append("g");
+       var rect = g.append("rect")
+           .attr("x", xMove)
+           .attr("y", yMove)
+           .attr("width", 0.4)
+           .attr("height", 0.4)
+           .attr("fill", "#000");
+       var txt = g.append("text")
+           .attr("x", txtMoveX)
+           .attr("y", txtMoveY)
+           .attr("fill", "#fff")
+           .text("96")
+           .attr("overflow", "visible")
+           .attr("font-size", 0.2);
 
-        });
-        console.log($("radar").);
     });
-
 </script>
 </body>
 </html>
