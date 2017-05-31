@@ -1,8 +1,10 @@
 #draggable {
-    width: 50px;
-    height: 50px;
+    width: 25px;
+    height: 25px;
     float: left;
-    margin: 10px 10px 10px 0;
+    margin: 0;
+    z-index: 1;
+
 }
 
 p{
@@ -10,44 +12,43 @@ p{
     padding: 0;
 }
 
+#circles {
+    margin: 0 auto;
+    display: table;
+}
 #droppable {
     width: 150px;
     height: 150px;
-    clear: both;
-    margin: 0 auto;
     border-radius: 50%;
-    display: table;
+    position: absolute;
     margin-top: 25%;
+    margin-left: 25%;
 }
 
 #droppable2 {
     width: 300px;
     height: 300px;
-    clear: both;
-    margin: 0 auto;
     border-radius: 50%;
-//background-color: blue;
-    display: table;
+    position: absolute;
     margin-top: 15%;
-
+    margin-left: 15%;
 }
 
 #droppable3 {
     width: 450px;
     height: 450px;
-    clear: both;
-    margin: 0 auto;
     border-radius: 50%;
-//background-color: blue;
-    display: table;
+    position: absolute;
+    margin-top: 12%;
+    margin-left: 12%;
 }
 
 #droppable4 {
     width: 600px;
     height: 600px;
-    margin: 0 auto;
     border-radius: 50%;
-/ / background-color: red;
+    position: relative;
+    float: right;
 }
 h1 {
     float: left;
@@ -55,4 +56,8 @@ h1 {
 }
 #radar{
     display: inline-block;
+}
+
+div {
+    border-radius: 50%;
 }

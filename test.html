@@ -12,23 +12,28 @@
 <body>
 <div id="view">
     <h1 id="draggable">X</h1>
-    <svg id="radar" viewBox="0 0 10 10" width="40%">
-        <circle class="droppable" cx="5" cy="5" r="5" fill="#962D3E"></circle>
-        <circle class="droppable" cx="5" cy="5" r="4" fill="#F2EBC7"></circle>
-        <circle class="droppable" cx="5" cy="5" r="3" fill="#343642"></circle>
-        <circle class="droppable" cx="5" cy="5" r="2" fill="#348899"></circle>
-    </svg>
+    <h1 id="coord"></h1>
+    <div id="divDroppable">
+        <svg id="radar" viewBox="0 0 10 10" width="40%">
+            <circle id="droppable1" cx="5" cy="5" r="5" fill="#962D3E"></circle>
+            <circle id="droppable2" cx="5" cy="5" r="4" fill="#F2EBC7"></circle>
+            <circle id="droppable3" cx="5" cy="5" r="3" fill="#343642"></circle>
+            <circle id="droppable4" cx="5" cy="5" r="2" fill="#348899"></circle>
+        </svg>
+    </div>
+
 </div>
 <script>
     $( function() {
         $("#draggable").draggable();
-        $(".droppable").droppable({
-            greedy: true,
+        // Making SVG droppable
+        $("#divDroppable").droppable({
             drop: function (event, ui) {
-                console.log("DROPPED!");
-
+                console.log(ui);
             }
+
         });
+        console.log($("radar").);
     });
 
 </script>
