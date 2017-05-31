@@ -49,3 +49,10 @@ p{
     border-radius: 50%;
 / / background-color: red;
 }
+h1 {
+    float: left;
+    margin: 0;
+}
+#radar{
+    display: inline-block;
+}
