@@ -14,15 +14,11 @@
 <div id="view">
     <div id="right">
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
+
         </ul>
     </div>
     <div id="left">
-        <svg id="radar" viewBox="0 0 10 10" width="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 10 10" width="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
             <circle id="droppable1" cx="5" cy="5" r="5" fill="#962D3E"></circle>
             <circle id="droppable2" cx="5" cy="5" r="4" fill="#F2EBC7"></circle>
             <circle id="droppable3" cx="5" cy="5" r="3" fill="#343642"></circle>
@@ -33,6 +29,7 @@
 
 
 <script>
+    var counter = 1;
     $(function(){
         svg = d3.select("svg");
         var offset = -0.2;
@@ -48,16 +45,18 @@
         for(var i = 1; i<=items; i++){
             var xMove = c + r*(Math.cos(i*angle));
             var yMove = c - r*(Math.sin(i*angle));
-            addItem(xMove, yMove, i+"");
+            addItem(xMove, yMove, counter+"");
+            counter++;
         }
     }
     function addItem (x, y, txt){
         var g = svg.append("g")
+            .attr("id", txt)
             .on("mouseover", function(){
-                handleHover(rect);
+                handleHover(g, txt);
             })
             .on("mouseout", function(){
-               handleHoverOut(rect);
+               handleHoverOut(g, txt);
             });
         var rect = g.append("rect")
             .attr("x", x)
@@ -72,12 +71,15 @@
             .text(txt)
             .attr("overflow", "visible")
             .attr("font-size", 0.2);
+        $("ul").append("<li id='"+counter+"'>" + txt + "</li>");
     }
-    function handleHover (rect){
-        rect.attr("fill", "#0000FF");
+    function handleHover (rect, num){
+        rect.attr("opacity", 0.75);
+        $("#" + num).css("background-color", "green");
     }
-    function handleHoverOut(rect){
-        rect.attr("fill", "000");
+    function handleHoverOut(rect, num){
+        rect.attr("opacity", 1.0);
+        $("#" + num).css("background-color", "white");
     }
 </script>
 </body>
