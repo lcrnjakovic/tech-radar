@@ -8,24 +8,39 @@
     float: right;
     margin-right: 5%;
     overflow-y: auto;
-    height: 30vh;
-    width: 20%;
+    height: 20vh;
+    width: 25%;
+    position: absolute;               /* 2 */
+    top: 50%;                         /* 3 */
+    transform: translate(275%, -50%)
 }
-
+@media only screen and (min-width: 768px){
+    #right {
+        height: 50vh;
+    }
+}
+@media only screen and (min-width: 1260px){
+    #right {
+        height: 75vh;
+    }
+}
 #left {
 
 }
 
 
- #radar {
+#radar {
      height: 750px;
      width: 750px;
      border: double black 5px;
  }
+
 #right ul {
     list-style-type: none;
+    margin-right: 5px;
 }
- .mapLegend{
+
+.mapLegend{
      float: right;
      display: block;
      border: double black 5px;
@@ -35,10 +50,11 @@
      margin: 0.7em;
  }
 #right ul li{
-    border: solid;
-    border-radius: 1%;
+    border: solid 1px;
+    border-radius: 5px;
+    margin-bottom: 2px;
 }
 
- #litems{
-     font-size: 1.5em;
- }
+#litems{
+    font-size: 1.5em;
+}
