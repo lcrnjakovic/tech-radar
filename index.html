@@ -7,6 +7,8 @@
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <script>
         function changeImage(id)
         {
@@ -24,19 +26,19 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#"><b>Welcome to Tech Radar!</b></a>
+                    <a href="#" onclick="clearRadar()"><b>Welcome to Tech Radar!</b></a>
                 </li>
                 <li>
-                    <a href="#" onclick="changeImage(1)"> Technology 1 </a>
+                    <a href="#" onclick="populateRadar(1)"> Technology 1 </a>
                 </li>
                 <li>
-                    <a href="#" onclick="changeImage(2)"> Technology 2 </a>
+                    <a href="#" onclick="populateRadar(2)"> Technology 2 </a>
                 </li>
                 <li>
-                    <a href="#" onclick="changeImage(3)"> Technology 3 </a>
+                    <a href="#" onclick="populateRadar(3)"> Technology 3 </a>
                 </li>
                 <li>
-                    <a href="#" onclick="changeImage(4)"> Technology 4 </a>
+                    <a href="#" onclick="populateRadar(4)"> Technology 4 </a>
                 </li>
             </ul>
         </div>
@@ -73,7 +75,15 @@
             </ul>
         </div>
 
-        <img id="radar" class="img-responsive" src="resources/welcome.jpg">
+        <!--<img id="radar" class="img-responsive" src="resources/welcome.jpg">-->
+        <div id="left">
+            <svg id="radar" viewBox="0 0 10 10" width="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
+                <circle id="droppable1" cx="5" cy="5" r="5" fill="#924343"></circle>
+                <circle id="droppable2" cx="5" cy="5" r="4" fill="#F3E8E8"></circle>
+                <circle id="droppable3" cx="5" cy="5" r="3" fill="#E5C904"></circle>
+                <circle id="droppable4" cx="5" cy="5" r="2" fill="#016C0E"></circle>
+            </svg>
+        </div>
 
         <br>
         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide/Show Menu</a>
@@ -87,6 +97,119 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+</script>
+<script>
+    /**$(function(){
+        svg = d3.select("svg");
+        var offset = -0.2;
+        center = 5 + offset;
+        populateCircle(4.5, center, 7);
+        populateCircle(3.5, center, 6);
+        populateCircle(2.5, center, 3);
+        populateCircle(1.5, center, 6);
+        populateCircle(0.5, center, 5);
+    });*/
+    function populateCircle (r, c, items){
+        var angle = (2*Math.PI)/items
+        for(var i = 1; i<=items; i++){
+            var xMove = c + r*(Math.cos(i*angle));
+            var yMove = c - r*(Math.sin(i*angle));
+            addItem(xMove, yMove, i+"");
+        }
+    }
+
+    function populateOutCircle(items){
+        populateCircle(4.5, 4.8, items);
+    }
+
+    function populateMidCircle(items){
+        populateCircle(3.5, 4.8, items);
+    }
+
+    function populateInCircle(items){
+        populateCircle(2.5, 4.8, items);
+    }
+
+    function populateBullCircle(items){
+        if(items > 6){
+            populateCircle(1.5, 4.8, 6);
+            populateCircle(0.5, 4.8, items-6);
+        } else {
+            populateCircle(0.5, 4.8, items);
+        }
+    }
+
+    function clearRadar(){
+        svg = d3.select("svg");
+        svg.selectAll("g").remove();
+    }
+
+    function populateRadar(id) {
+        svg = d3.select("svg");
+        clearRadar();
+
+        // ID ce se tu mijenjat i vuc podatke iz baze ovisno o tech koji user oce vidjet
+        if(id == 1){
+            var c3 = 7;
+            var c2 = 6;
+            var c1 = 5;
+            var cBull = 7;
+        }
+
+        if(id == 2){
+            var c3 = 5;
+            var c2 = 7;
+            var c1 = 6;
+            var cBull = 1;
+        }
+
+        if(id == 3){
+            var c3 = 2;
+            var c2 = 9;
+            var c1 = 1;
+            var cBull = 10;
+        }
+
+        if(id == 4){
+            var c3 = 1;
+            var c2 = 2;
+            var c1 = 1;
+            var cBull = 0;
+        }
+
+        populateOutCircle(c3);
+        populateMidCircle(c2);
+        populateInCircle(c1);
+        populateBullCircle(cBull);
+    }
+    function addItem (x, y, txt){
+        var g = svg.append("g")
+            .on("mouseover", function(){
+                handleHover(rect);
+            })
+            .on("mouseout", function(){
+                handleHoverOut(rect);
+            });
+        var rect = g.append("rect")
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width", 0.4)
+            .attr("height", 0.4)
+            .attr("fill", "#000");
+        var text = g.append("text")
+            .attr("x", x + 0.1)
+            .attr("y", y + 0.25)
+            .attr("fill", "#fff")
+            .text(txt)
+            .attr("overflow", "visible")
+            .attr("font-size", 0.2);
+    }
+    function handleHover (rect){
+        rect.attr("fill", "#0000FF");
+    }
+    function handleHoverOut(rect){
+        rect.attr("fill", "000");
+    }
 </script>
 </body>
 </html>
