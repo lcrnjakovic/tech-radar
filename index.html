@@ -2,101 +2,91 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>jQuery UI Droppable - Default functionality</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="css/style.css">
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Radar Prototype</title>
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script>
-        $( function() {
-            $( "#draggable" ).draggable();
-            $( "#droppable" ).droppable({
-                greedy: true,
-                drop: function( event, ui ) {
-                    var myX = ui.offset.left;
-                    var myY = ui.offset.top;
-
-                    var myR = $(this).outerWidth() / 2;
-                    var myCX = $(this).offset().left + myR;
-                    var myCY = $(this).offset().top + myR;
-
-                    if (checkIntersection(myX, myY, myCX, myCY, myR))
-                    {
-                        $(this).addClass('ui-state-highlight');
-                    }
-                }
-            });
-            $( "#droppable2" ).droppable({
-                greedy: true,
-                drop: function( event, ui ) {
-                    var myX = ui.offset.left;
-                    var myY = ui.offset.top;
-
-                    var myR = $(this).outerWidth() / 2;
-                    var myCX = $(this).offset().left + myR;
-                    var myCY = $(this).offset().top + myR;
-
-                    if (checkIntersection(myX, myY, myCX, myCY, myR))
-                    {
-                        $(this).addClass('ui-state-highlight');
-                    }
-                }
-            });
-            $( "#droppable3" ).droppable({
-                greedy: true,
-                drop: function( event, ui ) {
-                    var myX = ui.offset.left;
-                    var myY = ui.offset.top;
-
-                    var myR = $(this).outerWidth() / 2;
-                    var myCX = $(this).offset().left + myR;
-                    var myCY = $(this).offset().top + myR;
-
-                    if (checkIntersection(myX, myY, myCX, myCY, myR))
-                    {
-                        $(this).addClass('ui-state-highlight');
-                    }
-                }
-            });
-            $( "#droppable4" ).droppable({
-                drop: function( event, ui ) {
-                    var myX = ui.offset.left;
-                    var myY = ui.offset.top;
-
-                    var myR = $(this).outerWidth() / 2;
-                    var myCX = $(this).offset().left + myR;
-                    var myCY = $(this).offset().top + myR;
-
-                    if (checkIntersection(myX, myY, myCX, myCY, myR))
-                    {
-                        $(this).addClass('ui-state-highlight');
-                    }
-                }
-            });
-        } );
-        function checkIntersection(aX, aY, aCX, aCY, aR) {
-            return (Math.pow(aX - aCX, 2) + Math.pow(aY - aCY, 2) < Math.pow(aR, 2));
+        function changeImage(id)
+        {
+            var img = document.getElementById("radar");
+            img.src="resources/j"+ id +".jpg";
+            return false;
         }
     </script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
 </head>
 <body>
-
-<div id="draggable" class="ui-widget-content">
-    <p>x</p>
-</div>
-<div id="droppable4" class="ui-widget-header">
-    <div id="droppable3" class="ui-widget-header">
-        <div id="droppable2" class="ui-widget-header">
-            <div id="droppable" class="ui-widget-header">
-
-            </div>
+<div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#"><b>Welcome to Tech Radar!</b></a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeImage(1)"> Technology 1 </a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeImage(2)"> Technology 2 </a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeImage(3)"> Technology 3 </a>
+                </li>
+                <li>
+                    <a href="#" onclick="changeImage(4)"> Technology 4 </a>
+                </li>
+            </ul>
         </div>
+        <!-- /#sidebar-wrapper -->
+
+    <div id="page-content-wrapper">
+        <div class="mapLegend">
+            <h2> Legend </h2>
+            <ul id="litems">
+                <li>
+                    t1
+                </li>
+                <li>
+                    t2
+                </li>
+                <li>
+                    t3
+                </li>
+                <li>
+                    t4
+                </li>
+                <li>
+                    t5
+                </li>
+                <li>
+                    t6
+                </li>
+                <li>
+                    t7
+                </li>
+                <li>
+                    t8
+                </li>
+            </ul>
+        </div>
+
+        <img id="radar" class="img-responsive" src="resources/welcome.jpg">
+
+        <br>
+        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide/Show Menu</a>
+
     </div>
 </div>
-
-
-
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
 </body>
 </html>

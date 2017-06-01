@@ -1,63 +1,20 @@
-#draggable {
-    width: 25px;
-    height: 25px;
-    float: left;
-    margin: 0;
-    z-index: 1;
 
+ #radar {
+     height: 750px;
+     width: 750px;
+     border: double black 5px;
 }
 
-p{
-    margin: 0;
-    padding: 0;
-}
+ .mapLegend{
+     float: right;
+     display: block;
+     border: double black 5px;
+     border-right: none;
+     padding: 1em;
+     padding-right: 10%;
+     margin: 0.7em;
+ }
 
-#circles {
-    margin: 0 auto;
-    display: table;
-}
-#droppable {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    position: absolute;
-    margin-top: 25%;
-    margin-left: 25%;
-}
-
-#droppable2 {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    position: absolute;
-    margin-top: 15%;
-    margin-left: 15%;
-}
-
-#droppable3 {
-    width: 450px;
-    height: 450px;
-    border-radius: 50%;
-    position: absolute;
-    margin-top: 12%;
-    margin-left: 12%;
-}
-
-#droppable4 {
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    position: relative;
-    float: right;
-}
-h1 {
-    float: left;
-    margin: 0;
-}
-#radar{
-    display: inline-block;
-}
-
-div {
-    border-radius: 50%;
-}
+ #litems{
+     font-size: 1.5em;
+ }
