@@ -12,40 +12,73 @@
 </head>
 <body>
 <div id="view">
-    <div id="divDroppable">
-        <svg id="radar" viewBox="0 0 10 10" width="50%">
+    <div id="right">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+    <div id="left">
+        <svg id="radar" viewBox="0 0 10 10" width="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
             <circle id="droppable1" cx="5" cy="5" r="5" fill="#962D3E"></circle>
             <circle id="droppable2" cx="5" cy="5" r="4" fill="#F2EBC7"></circle>
             <circle id="droppable3" cx="5" cy="5" r="3" fill="#343642"></circle>
             <circle id="droppable4" cx="5" cy="5" r="2" fill="#348899"></circle>
         </svg>
     </div>
-
 </div>
+
+
 <script>
     $(function(){
+        svg = d3.select("svg");
         var offset = -0.2;
-        var xMove = 5 + offset;
-        var yMove = 7.5 + offset;
-        var txtMoveX = xMove + 0.1;
-        var txtMoveY = yMove + 0.25;
-       var svg = d3.select("svg");
-       var g = svg.append("g");
-       var rect = g.append("rect")
-           .attr("x", xMove)
-           .attr("y", yMove)
-           .attr("width", 0.4)
-           .attr("height", 0.4)
-           .attr("fill", "#000");
-       var txt = g.append("text")
-           .attr("x", txtMoveX)
-           .attr("y", txtMoveY)
-           .attr("fill", "#fff")
-           .text("96")
-           .attr("overflow", "visible")
-           .attr("font-size", 0.2);
-
+        center = 5 + offset;
+        populateCircle(4.5, center, 7);
+        populateCircle(3.5, center, 6);
+        populateCircle(2.5, center, 3);
+        populateCircle(1.5, center, 6);
+        populateCircle(0.5, center, 5);
     });
+    function populateCircle (r, c, items){
+        var angle = (2*Math.PI)/items
+        for(var i = 1; i<=items; i++){
+            var xMove = c + r*(Math.cos(i*angle));
+            var yMove = c - r*(Math.sin(i*angle));
+            addItem(xMove, yMove, i+"");
+        }
+    }
+    function addItem (x, y, txt){
+        var g = svg.append("g")
+            .on("mouseover", function(){
+                handleHover(rect);
+            })
+            .on("mouseout", function(){
+               handleHoverOut(rect);
+            });
+        var rect = g.append("rect")
+            .attr("x", x)
+            .attr("y", y)
+            .attr("width", 0.4)
+            .attr("height", 0.4)
+            .attr("fill", "#000");
+        var text = g.append("text")
+            .attr("x", x + 0.1)
+            .attr("y", y + 0.25)
+            .attr("fill", "#fff")
+            .text(txt)
+            .attr("overflow", "visible")
+            .attr("font-size", 0.2);
+    }
+    function handleHover (rect){
+        rect.attr("fill", "#0000FF");
+    }
+    function handleHoverOut(rect){
+        rect.attr("fill", "000");
+    }
 </script>
 </body>
 </html>
