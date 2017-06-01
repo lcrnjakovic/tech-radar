@@ -9,14 +9,6 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://d3js.org/d3.v4.min.js"></script>
 
-    <script>
-        function changeImage(id)
-        {
-            var img = document.getElementById("radar");
-            img.src="resources/j"+ id +".jpg";
-            return false;
-        }
-    </script>
     <script src="js/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -77,7 +69,7 @@
 
         <!--<img id="radar" class="img-responsive" src="resources/welcome.jpg">-->
         <div id="left">
-            <svg id="radar" viewBox="0 0 10 10" width="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
+            <svg id="radar" viewBox="0 0 10 10" width="50%" height="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
                 <circle id="droppable1" cx="5" cy="5" r="5" fill="#924343"></circle>
                 <circle id="droppable2" cx="5" cy="5" r="4" fill="#F3E8E8"></circle>
                 <circle id="droppable3" cx="5" cy="5" r="3" fill="#E5C904"></circle>
@@ -99,16 +91,6 @@
     });
 </script>
 <script>
-    /**$(function(){
-        svg = d3.select("svg");
-        var offset = -0.2;
-        center = 5 + offset;
-        populateCircle(4.5, center, 7);
-        populateCircle(3.5, center, 6);
-        populateCircle(2.5, center, 3);
-        populateCircle(1.5, center, 6);
-        populateCircle(0.5, center, 5);
-    });*/
     function populateCircle (r, c, items){
         var angle = (2*Math.PI)/items
         for(var i = 1; i<=items; i++){

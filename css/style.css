@@ -12,14 +12,9 @@
     width: 20%;
 }
 
-#left {
-
-}
-
 
  #radar {
-     height: 750px;
-     width: 750px;
+
      border: double black 5px;
  }
 #right ul {
