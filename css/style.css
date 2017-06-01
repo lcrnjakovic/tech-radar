@@ -8,8 +8,12 @@
     float: right;
     margin-right: 5%;
     overflow-y: auto;
-    height: 30vh;
+    height: 20vh;
     width: 20%;
+    position: absolute;
+    top: 50%;
+    transform: translate(275%, -50%);
+
 }
 @media only screen and (min-width: 768px){
     #right {
@@ -22,10 +26,6 @@
     }
 }
 
- #radar {
-
-     border: double black 5px;
- }
 #right ul {
     list-style-type: none;
 }
@@ -38,9 +38,9 @@
      padding-right: 10%;
      margin: 0.7em;
  }
-#right ul li{
+#list li{
     border: solid;
-    border-radius: 1%;
+    border-radius: 10%;
 }
 
  #litems{

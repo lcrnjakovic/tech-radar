@@ -37,36 +37,11 @@
         <!-- /#sidebar-wrapper -->
 
     <div id="page-content-wrapper">
-        <div class="mapLegend">
-            <h2> Legend </h2>
-            <ul id="litems">
-                <li>
-                    t1
-                </li>
-                <li>
-                    t2
-                </li>
-                <li>
-                    t3
-                </li>
-                <li>
-                    t4
-                </li>
-                <li>
-                    t5
-                </li>
-                <li>
-                    t6
-                </li>
-                <li>
-                    t7
-                </li>
-                <li>
-                    t8
-                </li>
+        <div id="right">
+            <ul id="list">
+
             </ul>
         </div>
-
         <!--<img id="radar" class="img-responsive" src="resources/welcome.jpg">-->
         <div id="left">
             <svg id="radar" viewBox="0 0 10 10" width="50%" height="50%" preserveAspectRatio="xMidYMin meet" xlmns="http://www.w3.org/2000/svg">
@@ -91,12 +66,14 @@
     });
 </script>
 <script>
+    var counter = 1;
     function populateCircle (r, c, items){
         var angle = (2*Math.PI)/items
         for(var i = 1; i<=items; i++){
             var xMove = c + r*(Math.cos(i*angle));
             var yMove = c - r*(Math.sin(i*angle));
-            addItem(xMove, yMove, i+"");
+            addItem(xMove, yMove, counter+"");
+            counter++;
         }
     }
 
@@ -124,6 +101,8 @@
     function clearRadar(){
         svg = d3.select("svg");
         svg.selectAll("g").remove();
+        counter = 1;
+        $("#list").empty();
     }
 
     function populateRadar(id) {
@@ -167,10 +146,10 @@
     function addItem (x, y, txt){
         var g = svg.append("g")
             .on("mouseover", function(){
-                handleHover(rect);
+                handleHover(g, txt);
             })
             .on("mouseout", function(){
-                handleHoverOut(rect);
+                handleHoverOut(g, txt);
             });
         var rect = g.append("rect")
             .attr("x", x)
@@ -185,12 +164,15 @@
             .text(txt)
             .attr("overflow", "visible")
             .attr("font-size", 0.2);
+        $("#list").append("<li id='"+counter+"'>" + txt + "</li>");
     }
-    function handleHover (rect){
-        rect.attr("fill", "#0000FF");
+    function handleHover (rect, num){
+        rect.attr("opacity", 0.75);
+        $("#" + num).css("background-color", "gray");
     }
-    function handleHoverOut(rect){
-        rect.attr("fill", "000");
+    function handleHoverOut(rect, num){
+        rect.attr("opacity", 1.0);
+        $("#" + num).css("background-color", "white");
     }
 </script>
 </body>
