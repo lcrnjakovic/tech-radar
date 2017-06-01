@@ -1,3 +1,4 @@
+
 #view {
     position: relative;
     top: 5vh;
@@ -15,11 +16,29 @@
 
 }
 
+
+ #radar {
+     height: 750px;
+     width: 750px;
+     border: double black 5px;
+ }
 #right ul {
     list-style-type: none;
 }
-
+ .mapLegend{
+     float: right;
+     display: block;
+     border: double black 5px;
+     border-right: none;
+     padding: 1em;
+     padding-right: 10%;
+     margin: 0.7em;
+ }
 #right ul li{
     border: solid;
     border-radius: 1%;
 }
+
+ #litems{
+     font-size: 1.5em;
+ }
