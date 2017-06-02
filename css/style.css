@@ -27,16 +27,6 @@ html, body {
         height: 75vh;
     }
 }
-#left {
-
-}
-
-
-#radar {
-     height: 750px;
-     width: 750px;
-     border: double black 5px;
- }
 
 ul {
     list-style-type: none;
