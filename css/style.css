@@ -1,4 +1,7 @@
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 #view {
     position: relative;
     top: 5vh;
@@ -10,8 +13,8 @@
     overflow-y: auto;
     height: 20vh;
     width: 25%;
-    position: absolute;               /* 2 */
-    top: 50%;                         /* 3 */
+    position: absolute;
+    top: 50%;
     transform: translate(275%, -50%)
 }
 @media only screen and (min-width: 768px){
@@ -35,7 +38,7 @@
      border: double black 5px;
  }
 
-#right ul {
+ul {
     list-style-type: none;
     margin-right: 5px;
 }
@@ -57,4 +60,33 @@
 
 #litems{
     font-size: 1.5em;
+}
+
+#sortableContainer {
+
+    height: 50vh;
+    width: 75%;
+    margin: 0 auto;
+    overflow-y: auto;
+
+}
+
+#techList {
+    width: 50%;
+    float: left;
+}
+
+#containers {
+    width: 50%;
+    float: right;
+}
+
+.cont {
+    width: 70%;
+    background-color: #636c72;
+    border-radius: 5px;
+    height: 20vh;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    overflow-y: auto;
 }

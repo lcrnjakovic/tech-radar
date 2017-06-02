@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Droppable TEST</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function (){
+            for(var i = 1; i<=20; i++){
+                $("#sortable").append("<li class='ui-state-default draggable'>Item " + i + "</li>");
+                $("#sortable").sortable({
+                    containment: "document",
+                    connectWith: ".cont"
+                });
+                $(".cont").sortable({
+                    containment: "document",
+                    connectWith: ["#sortable", ".cont"]
+                })
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="techList">
+        <div id="sortableContainer">
+            <ul id="sortable">
+
+            </ul>
+        </div>
+    </div>
+    <div id="containers">
+        <div id="java" class="cont">Java</div>
+        <div id="net" class="cont">.NET</div>
+        <div id="front-end" class="cont">Front-end</div>
+        <div id="platform" class="cont">Platforms & Methodologies</div>
+    </div>
+
+</body>
+</html>
